@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; configuration.title = "Register"; ObjectID = "6SF-re-nZg"; */
+"6SF-re-nZg.configuration.title" = "Register";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6SF-re-nZg"; */
+"6SF-re-nZg.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "A2p-B1-bOk"; */
+"A2p-B1-bOk.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "User does not exist"; ObjectID = "Mzd-IC-kXt"; */
+"Mzd-IC-kXt.text" = "User does not exist";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "htL-Ch-LvL"; */
+"htL-Ch-LvL.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "DoFu Admin"; ObjectID = "w43-GM-WVz"; */
+"w43-GM-WVz.text" = "DoFu Admin";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "xGU-VT-wyg"; */
+"xGU-VT-wyg.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xGU-VT-wyg"; */
+"xGU-VT-wyg.normalTitle" = "Button";

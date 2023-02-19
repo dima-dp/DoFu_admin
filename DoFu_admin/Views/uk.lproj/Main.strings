@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; configuration.title = "Register"; ObjectID = "6SF-re-nZg"; */
+"6SF-re-nZg.configuration.title" = "Реєстрація";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6SF-re-nZg"; */
+"6SF-re-nZg.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "A2p-B1-bOk"; */
+"A2p-B1-bOk.placeholder" = "E-mail";
+
+/* Class = "UILabel"; text = "User does not exist"; ObjectID = "Mzd-IC-kXt"; */
+"Mzd-IC-kXt.text" = "Користувача не знайдено";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "htL-Ch-LvL"; */
+"htL-Ch-LvL.placeholder" = "Пароль";
+
+/* Class = "UILabel"; text = "DoFu Admin"; ObjectID = "w43-GM-WVz"; */
+"w43-GM-WVz.text" = "DoFu Admin";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "wmX-4v-95D"; */
+"wmX-4v-95D.title" = "Позиції";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "xGU-VT-wyg"; */
+"xGU-VT-wyg.configuration.title" = "Увійти";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xGU-VT-wyg"; */
+"xGU-VT-wyg.normalTitle" = "Button";

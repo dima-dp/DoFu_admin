@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DoFu_admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="DoFu_admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="yid-m7-zjj" userLabel="textFieldsStackView">
                                         <rect key="frame" x="0.0" y="184" width="240" height="115.5"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-B1-bOk">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-B1-bOk">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="38.5"/>
                                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -69,6 +69,10 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" white="1" alpha="0.15209051473251242" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D5l-5B-SYW"/>
+                                                    <segue destination="ipf-i4-fc2" kind="show" identifier="itemsSegue" id="rId-AU-G8a"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-re-nZg">
                                                 <rect key="frame" x="0.0" y="69.5" width="160" height="41.5"/>
@@ -78,6 +82,9 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ZV-oN-K50"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -111,18 +118,95 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="TFPassword" destination="htL-Ch-LvL" id="KsT-Ci-hdt"/>
-                        <outlet property="buttonLogin" destination="xGU-VT-wyg" id="5w1-Vg-hTu"/>
-                        <outlet property="buttonRegister" destination="6SF-re-nZg" id="iw5-Ew-sQi"/>
-                        <outlet property="labelUserDoesntExist" destination="Mzd-IC-kXt" id="MY8-0D-41G"/>
+                        <outlet property="emailTextField" destination="A2p-B1-bOk" id="xOR-5w-by4"/>
+                        <outlet property="passwordTextField" destination="htL-Ch-LvL" id="Nwv-ka-Tg3"/>
+                        <outlet property="warningLabel" destination="Mzd-IC-kXt" id="aOD-a0-mCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="35.877862595419849" y="3.5211267605633805"/>
         </scene>
+        <!--Items-->
+        <scene sceneID="0Dh-xG-xon">
+            <objects>
+                <viewController id="HDi-fu-sUo" customClass="ItemsViewController" customModule="DoFu_admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HFl-i8-iL7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kOD-rW-Rj6">
+                                <rect key="frame" x="0.0" y="56" width="320" height="492"/>
+                                <color key="backgroundColor" red="0.18109270929999999" green="0.2231942415" blue="0.25490707159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" red="0.18109270929999999" green="0.2231942415" blue="0.25490707159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="rWe-XH-92n">
+                                        <rect key="frame" x="0.0" y="50" width="320" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rWe-XH-92n" id="6hG-B3-hlX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18109270929999999" green="0.2231942415" blue="0.25490707159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HDi-fu-sUo" id="HMh-Gk-4xq"/>
+                                    <outlet property="delegate" destination="HDi-fu-sUo" id="sqd-zs-UFA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xJ7-IQ-dFx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kOD-rW-Rj6" firstAttribute="top" secondItem="xJ7-IQ-dFx" secondAttribute="top" id="DGf-Ma-UuI"/>
+                            <constraint firstItem="kOD-rW-Rj6" firstAttribute="trailing" secondItem="xJ7-IQ-dFx" secondAttribute="trailing" id="PBP-kJ-IGx"/>
+                            <constraint firstItem="kOD-rW-Rj6" firstAttribute="leading" secondItem="xJ7-IQ-dFx" secondAttribute="leading" id="dfL-G9-RnU"/>
+                            <constraint firstItem="kOD-rW-Rj6" firstAttribute="bottom" secondItem="xJ7-IQ-dFx" secondAttribute="bottom" id="ruq-7n-6Me"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Items" id="wmX-4v-95D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2x4-zC-as1">
+                            <connections>
+                                <action selector="addTapped:" destination="HDi-fu-sUo" id="JQ7-Y5-RSu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kOD-rW-Rj6" id="Og8-Rm-4LO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5K6-NW-ZTH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507.5" y="2.112676056338028"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MnW-tI-kYs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ipf-i4-fc2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="46z-3J-PRo"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Yv-vC-WRk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HDi-fu-sUo" kind="relationship" relationship="rootViewController" id="I6r-OZ-6x2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RwH-S6-OW3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="776.25" y="2.112676056338028"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
