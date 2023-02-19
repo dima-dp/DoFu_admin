@@ -9,9 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var labelUserDoesntExist: UILabel!
+    @IBOutlet weak var TFPassword: UITextField!
+    @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var buttonRegister: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+
+    }
+    
+    private func localize() {
+        
     }
 
 

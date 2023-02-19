@@ -1,24 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DoFu_admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="nms-AM-RX1" userLabel="mainStackView">
+                                <rect key="frame" x="40" y="54" width="240" height="460.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="sQP-vz-67G" userLabel="topLabelsStackView">
+                                        <rect key="frame" x="16.5" y="0.0" width="207" height="134"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DoFu Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w43-GM-WVz">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="64"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="40"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User does not exist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzd-IC-kXt">
+                                                <rect key="frame" x="3.5" y="94" width="200" height="40"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="yid-m7-zjj" userLabel="textFieldsStackView">
+                                        <rect key="frame" x="0.0" y="184" width="240" height="115.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-B1-bOk">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="38.5"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="htL-Ch-LvL">
+                                                <rect key="frame" x="0.0" y="78.5" width="240" height="37"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="htL-Ch-LvL" firstAttribute="leading" secondItem="yid-m7-zjj" secondAttribute="leading" id="Crl-4H-JVE"/>
+                                            <constraint firstItem="A2p-B1-bOk" firstAttribute="leading" secondItem="yid-m7-zjj" secondAttribute="leading" id="F33-cY-C0j"/>
+                                            <constraint firstAttribute="trailing" secondItem="htL-Ch-LvL" secondAttribute="trailing" id="KRk-Vk-nJ7"/>
+                                            <constraint firstAttribute="trailing" secondItem="A2p-B1-bOk" secondAttribute="trailing" id="z8n-mb-0Iv"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qfj-u7-NHp" userLabel="buttonsStackView">
+                                        <rect key="frame" x="40" y="349.5" width="160" height="111"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGU-VT-wyg">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="49.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Login">
+                                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="22"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" white="1" alpha="0.15209051473251242" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-re-nZg">
+                                                <rect key="frame" x="0.0" y="69.5" width="160" height="41.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Register">
+                                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="6SF-re-nZg" secondAttribute="trailing" id="QuX-ZM-TAp"/>
+                                            <constraint firstItem="6SF-re-nZg" firstAttribute="leading" secondItem="Qfj-u7-NHp" secondAttribute="leading" id="gvb-nQ-ps9"/>
+                                            <constraint firstItem="xGU-VT-wyg" firstAttribute="leading" secondItem="Qfj-u7-NHp" secondAttribute="leading" id="qgT-PH-Pg5"/>
+                                            <constraint firstAttribute="trailing" secondItem="xGU-VT-wyg" secondAttribute="trailing" id="rnh-Fg-kQW"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Qfj-u7-NHp" firstAttribute="leading" secondItem="nms-AM-RX1" secondAttribute="leading" constant="40" id="0Wn-ne-Gw3"/>
+                                    <constraint firstAttribute="trailing" secondItem="yid-m7-zjj" secondAttribute="trailing" id="Bvo-7M-KRc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qfj-u7-NHp" secondAttribute="trailing" constant="40" id="LTw-Qz-tlb"/>
+                                    <constraint firstItem="yid-m7-zjj" firstAttribute="leading" secondItem="nms-AM-RX1" secondAttribute="leading" id="Llh-yq-RIA"/>
+                                    <constraint firstItem="yid-m7-zjj" firstAttribute="leading" secondItem="nms-AM-RX1" secondAttribute="leading" id="TiF-ys-g9q"/>
+                                    <constraint firstAttribute="trailing" secondItem="yid-m7-zjj" secondAttribute="trailing" id="V2O-8Q-tR1"/>
+                                    <constraint firstAttribute="trailing" secondItem="yid-m7-zjj" secondAttribute="trailing" id="z3u-XI-hov"/>
+                                    <constraint firstItem="yid-m7-zjj" firstAttribute="leading" secondItem="nms-AM-RX1" secondAttribute="leading" id="ztF-Bw-o3w"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.18272079429999999" green="0.22367629459999999" blue="0.25382134319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" systemColor="tintColor"/>
+                        <constraints>
+                            <constraint firstItem="nms-AM-RX1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Nid-t0-ybq"/>
+                            <constraint firstItem="nms-AM-RX1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Nx4-HQ-9OE"/>
+                            <constraint firstItem="nms-AM-RX1" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ioV-cF-z3x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nms-AM-RX1" secondAttribute="trailing" constant="40" id="li8-vO-LfV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="TFPassword" destination="htL-Ch-LvL" id="KsT-Ci-hdt"/>
+                        <outlet property="buttonLogin" destination="xGU-VT-wyg" id="5w1-Vg-hTu"/>
+                        <outlet property="buttonRegister" destination="6SF-re-nZg" id="iw5-Ew-sQi"/>
+                        <outlet property="labelUserDoesntExist" destination="Mzd-IC-kXt" id="MY8-0D-41G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="35.877862595419849" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
