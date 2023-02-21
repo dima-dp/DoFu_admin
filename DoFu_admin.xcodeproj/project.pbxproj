@@ -13,6 +13,7 @@
 		F447194229A1840900B6C3DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F447194029A1840900B6C3DA /* Main.storyboard */; };
 		F447194429A1840F00B6C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F447194329A1840F00B6C3DA /* Assets.xcassets */; };
 		F447194729A1840F00B6C3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F447194529A1840F00B6C3DA /* LaunchScreen.storyboard */; };
+		F46A36C029A528110009F323 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46A36BF29A528110009F323 /* DetailViewController.swift */; };
 		F4AABEC129A25937006B523B /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AABEC029A25937006B523B /* ItemsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		F447194329A1840F00B6C3DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F447194629A1840F00B6C3DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F447194829A1840F00B6C3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46A36BF29A528110009F323 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F4AABEC029A25937006B523B /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		F4AABEC529A25C03006B523B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 		F4AABEC229A25957006B523B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F46A36BF29A528110009F323 /* DetailViewController.swift */,
 				F447193E29A1840900B6C3DA /* LoginViewController.swift */,
 				F4AABEC029A25937006B523B /* ItemsViewController.swift */,
 			);
@@ -169,6 +172,7 @@
 			files = (
 				F447193F29A1840900B6C3DA /* LoginViewController.swift in Sources */,
 				F4AABEC129A25937006B523B /* ItemsViewController.swift in Sources */,
+				F46A36C029A528110009F323 /* DetailViewController.swift in Sources */,
 				F447193B29A1840900B6C3DA /* AppDelegate.swift in Sources */,
 				F447193D29A1840900B6C3DA /* SceneDelegate.swift in Sources */,
 			);

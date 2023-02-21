@@ -24,7 +24,24 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "detailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "detailSegue") {
+            
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let detailView = segue.destination as? DetailViewController
+                detailView?.selectedObject = "\(indexPath)"
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }
+            
+            
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

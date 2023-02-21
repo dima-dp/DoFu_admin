@@ -171,8 +171,8 @@
                     <navigationItem key="navigationItem" title="Items" id="wmX-4v-95D">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2x4-zC-as1">
                             <connections>
-                                <action selector="addTapped:" destination="HDi-fu-sUo" id="JQ7-Y5-RSu"/>
-                                <segue destination="ipM-K7-O8X" kind="showDetail" id="BAg-HO-Qot"/>
+                                <action selector="addTapped:" destination="RRf-65-jbT" id="geX-hx-s2c"/>
+                                <segue destination="ipM-K7-O8X" kind="showDetail" identifier="detailSegue" id="1lb-tY-34p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -181,13 +181,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5K6-NW-ZTH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="RRf-65-jbT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1507.5" y="2.112676056338028"/>
+            <point key="canvasLocation" x="1551" y="2"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="s7c-4J-a6r">
             <objects>
-                <viewController id="ipM-K7-O8X" sceneMemberID="viewController">
+                <viewController id="ipM-K7-O8X" customClass="DetailViewController" customModule="DoFu_admin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kME-Dh-4Bs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
