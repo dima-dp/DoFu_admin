@@ -35,9 +35,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let detailView = segue.destination as? DetailViewController
                 detailView?.selectedObject = "\(indexPath)"
                 self.tableView.deselectRow(at: indexPath, animated: true)
-            }
-            
-            
+            }  
             
         }
     }

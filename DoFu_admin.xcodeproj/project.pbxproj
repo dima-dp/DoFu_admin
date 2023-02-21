@@ -55,7 +55,6 @@
 				ED5A94769B37982D1E105F39 /* Pods-DoFu_admin.debug.xcconfig */,
 				BC1D7A3F2EEEEE8B302A821D /* Pods-DoFu_admin.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -99,9 +98,9 @@
 		F4AABEC229A25957006B523B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F46A36BF29A528110009F323 /* DetailViewController.swift */,
 				F447193E29A1840900B6C3DA /* LoginViewController.swift */,
 				F4AABEC029A25937006B523B /* ItemsViewController.swift */,
+				F46A36BF29A528110009F323 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
