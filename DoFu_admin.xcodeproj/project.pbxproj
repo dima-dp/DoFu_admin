@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1ABCCF1B382431B435B2E93 /* Pods_DoFu_admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A953F130E99C012CA12330AD /* Pods_DoFu_admin.framework */; };
 		F447193B29A1840900B6C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447193A29A1840900B6C3DA /* AppDelegate.swift */; };
 		F447193D29A1840900B6C3DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447193C29A1840900B6C3DA /* SceneDelegate.swift */; };
 		F447193F29A1840900B6C3DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447193E29A1840900B6C3DA /* LoginViewController.swift */; };
@@ -14,10 +15,14 @@
 		F447194429A1840F00B6C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F447194329A1840F00B6C3DA /* Assets.xcassets */; };
 		F447194729A1840F00B6C3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F447194529A1840F00B6C3DA /* LaunchScreen.storyboard */; };
 		F46A36C029A528110009F323 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46A36BF29A528110009F323 /* DetailViewController.swift */; };
+		F46A36C229A553CE0009F323 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F46A36C129A553CE0009F323 /* GoogleService-Info.plist */; };
 		F4AABEC129A25937006B523B /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AABEC029A25937006B523B /* ItemsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A953F130E99C012CA12330AD /* Pods_DoFu_admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoFu_admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC1D7A3F2EEEEE8B302A821D /* Pods-DoFu_admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoFu_admin.release.xcconfig"; path = "Target Support Files/Pods-DoFu_admin/Pods-DoFu_admin.release.xcconfig"; sourceTree = "<group>"; };
+		ED5A94769B37982D1E105F39 /* Pods-DoFu_admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoFu_admin.debug.xcconfig"; path = "Target Support Files/Pods-DoFu_admin/Pods-DoFu_admin.debug.xcconfig"; sourceTree = "<group>"; };
 		F447193729A1840900B6C3DA /* DoFu_admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoFu_admin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F447193A29A1840900B6C3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F447193C29A1840900B6C3DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +32,7 @@
 		F447194629A1840F00B6C3DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F447194829A1840F00B6C3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46A36BF29A528110009F323 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F46A36C129A553CE0009F323 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4AABEC029A25937006B523B /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		F4AABEC529A25C03006B523B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -36,17 +42,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1ABCCF1B382431B435B2E93 /* Pods_DoFu_admin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00A9A0925C3FBEADBE854076 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED5A94769B37982D1E105F39 /* Pods-DoFu_admin.debug.xcconfig */,
+				BC1D7A3F2EEEEE8B302A821D /* Pods-DoFu_admin.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2C03D89156941AFA3C8A611A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A953F130E99C012CA12330AD /* Pods_DoFu_admin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F447192E29A1840900B6C3DA = {
 			isa = PBXGroup;
 			children = (
 				F447193929A1840900B6C3DA /* DoFu_admin */,
 				F447193829A1840900B6C3DA /* Products */,
+				00A9A0925C3FBEADBE854076 /* Pods */,
+				2C03D89156941AFA3C8A611A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +111,7 @@
 			children = (
 				F447193A29A1840900B6C3DA /* AppDelegate.swift */,
 				F447193C29A1840900B6C3DA /* SceneDelegate.swift */,
+				F46A36C129A553CE0009F323 /* GoogleService-Info.plist */,
 				F447194329A1840F00B6C3DA /* Assets.xcassets */,
 				F447194529A1840F00B6C3DA /* LaunchScreen.storyboard */,
 			);
@@ -105,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F447194B29A1840F00B6C3DA /* Build configuration list for PBXNativeTarget "DoFu_admin" */;
 			buildPhases = (
+				EF912975E516A4D877ACAE72 /* [CP] Check Pods Manifest.lock */,
 				F447193329A1840900B6C3DA /* Sources */,
 				F447193429A1840900B6C3DA /* Frameworks */,
 				F447193529A1840900B6C3DA /* Resources */,
+				FFDC25D2FFD02AAC9F57F00D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,12 +188,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				F447194729A1840F00B6C3DA /* LaunchScreen.storyboard in Resources */,
+				F46A36C229A553CE0009F323 /* GoogleService-Info.plist in Resources */,
 				F447194429A1840F00B6C3DA /* Assets.xcassets in Resources */,
 				F447194229A1840900B6C3DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EF912975E516A4D877ACAE72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoFu_admin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFDC25D2FFD02AAC9F57F00D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoFu_admin/Pods-DoFu_admin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoFu_admin/Pods-DoFu_admin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoFu_admin/Pods-DoFu_admin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F447193329A1840900B6C3DA /* Sources */ = {
@@ -319,6 +392,7 @@
 		};
 		F447194C29A1840F00B6C3DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED5A94769B37982D1E105F39 /* Pods-DoFu_admin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -340,14 +414,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ihnatenko.DoFu-admin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F447194D29A1840F00B6C3DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC1D7A3F2EEEEE8B302A821D /* Pods-DoFu_admin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -369,9 +447,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ihnatenko.DoFu-admin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
