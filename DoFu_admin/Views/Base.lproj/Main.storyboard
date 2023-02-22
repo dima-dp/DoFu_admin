@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="DoFu_admin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -76,12 +76,17 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-re-nZg">
                                                 <rect key="frame" x="0.0" y="69.5" width="160" height="41.5"/>
-                                                <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Register">
                                                     <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isUserInteractionDisabledWhenSkeletonIsActive" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ZV-oN-K50"/>
                                                 </connections>
@@ -110,20 +115,30 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.18272079429999999" green="0.22367629459999999" blue="0.25382134319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" systemColor="tintColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="nms-AM-RX1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Nid-t0-ybq"/>
                             <constraint firstItem="nms-AM-RX1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Nx4-HQ-9OE"/>
                             <constraint firstItem="nms-AM-RX1" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ioV-cF-z3x"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nms-AM-RX1" secondAttribute="trailing" constant="40" id="li8-vO-LfV"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="66D-0V-iVa" appends="YES" id="rrK-9C-344"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="A2p-B1-bOk" id="xOR-5w-by4"/>
+                        <outlet property="loginButton" destination="xGU-VT-wyg" id="vgX-lm-wkg"/>
                         <outlet property="passwordTextField" destination="htL-Ch-LvL" id="Nwv-ka-Tg3"/>
                         <outlet property="warningLabel" destination="Mzd-IC-kXt" id="aOD-a0-mCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="66D-0V-iVa">
+                    <connections>
+                        <action selector="tapTapped:" destination="BYZ-38-t0r" id="MV2-en-lTN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="35.877862595419849" y="3.5211267605633805"/>
         </scene>
@@ -208,6 +223,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6KM-ad-woK" appends="YES" id="wOP-kL-BJg"/>
+                                </connections>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="927-N9-Ki9" userLabel="StackENNAme">
                                 <rect key="frame" x="15" y="107.5" width="290" height="72.5"/>
@@ -280,6 +299,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GZZ-1T-oRf">
                                         <rect key="frame" x="215" y="0.0" width="75" height="75"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="9zU-5g-cyk"/>
                                             <constraint firstAttribute="width" constant="75" id="bp2-Iu-57i"/>
@@ -353,6 +373,11 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOv-Wh-PJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6KM-ad-woK">
+                    <connections>
+                        <action selector="tapTapped:" destination="ipM-K7-O8X" id="FuY-CN-u5g"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2291.25" y="1.056338028169014"/>
         </scene>
