@@ -13,19 +13,60 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+    var ref: DatabaseReference!
+    var items = Array<Items>()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        ref = Database.database().reference(withPath: "items")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ref.observe(.value) { [weak self] (snapshot) in
+            var _items = Array<Items>()
+            for item in snapshot.children {
+                let item = Items(snapshot: item as! DataSnapshot)
+                _items.append(item)
+            }
+            
+            self?.items = _items
+            self?.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ref.removeAllObservers()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = items[indexPath.row]
+            item.ref?.removeValue()
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "This is cell #\(indexPath.row)"
+        cell.textLabel?.text = items[indexPath.row].nameEN
         cell.textLabel?.textColor = .white
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         self.performSegue(withIdentifier: "detailSegue", sender: self)
     }
     
@@ -41,11 +82,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
     
     @IBAction func addTapped(_ sender: UIBarButtonItem) {
     }

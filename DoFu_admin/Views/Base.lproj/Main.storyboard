@@ -267,7 +267,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lOo-ge-Rjj">
                                         <rect key="frame" x="0.0" y="34" width="290" height="38.5"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -288,7 +288,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3kf-O2-F0c">
                                         <rect key="frame" x="0.0" y="34" width="290" height="38.5"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="url"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -342,6 +342,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VeW-oH-GlQ"/>
+                                    <action selector="saveTapped:" destination="ipM-K7-O8X" eventType="touchUpInside" id="Sqv-t9-95N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -377,7 +378,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="costTF" destination="lOo-ge-Rjj" id="SSb-gy-3Hb"/>
+                        <outlet property="enabledSwitch" destination="W4r-3N-wGY" id="x6k-k4-Ce4"/>
                         <outlet property="image" destination="GZZ-1T-oRf" id="rny-uw-OIw"/>
+                        <outlet property="linkTF" destination="3kf-O2-F0c" id="73i-i9-5Zo"/>
+                        <outlet property="nameENTF" destination="up9-vD-jWy" id="dJZ-HJ-o0W"/>
+                        <outlet property="nameUATF" destination="laC-9b-PdK" id="M12-w8-SdS"/>
                         <outletCollection property="textFields" destination="laC-9b-PdK" collectionClass="NSMutableArray" id="jzE-rO-gWA"/>
                         <outletCollection property="textFields" destination="up9-vD-jWy" collectionClass="NSMutableArray" id="y2T-CE-EpW"/>
                         <outletCollection property="textFields" destination="lOo-ge-Rjj" collectionClass="NSMutableArray" id="68u-5H-zWd"/>

@@ -10,6 +10,7 @@
 		B1ABCCF1B382431B435B2E93 /* Pods_DoFu_admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A953F130E99C012CA12330AD /* Pods_DoFu_admin.framework */; };
 		F417125929A795D1001535EE /* Extension LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417125829A795D1001535EE /* Extension LoginViewController.swift */; };
 		F417125C29A7982F001535EE /* Extension DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417125B29A7982F001535EE /* Extension DetailViewController.swift */; };
+		F417125E29A7DB1D001535EE /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417125D29A7DB1D001535EE /* Items.swift */; };
 		F447193B29A1840900B6C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447193A29A1840900B6C3DA /* AppDelegate.swift */; };
 		F447193D29A1840900B6C3DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447193C29A1840900B6C3DA /* SceneDelegate.swift */; };
 		F447193F29A1840900B6C3DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447193E29A1840900B6C3DA /* LoginViewController.swift */; };
@@ -27,6 +28,7 @@
 		ED5A94769B37982D1E105F39 /* Pods-DoFu_admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoFu_admin.debug.xcconfig"; path = "Target Support Files/Pods-DoFu_admin/Pods-DoFu_admin.debug.xcconfig"; sourceTree = "<group>"; };
 		F417125829A795D1001535EE /* Extension LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension LoginViewController.swift"; sourceTree = "<group>"; };
 		F417125B29A7982F001535EE /* Extension DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension DetailViewController.swift"; sourceTree = "<group>"; };
+		F417125D29A7DB1D001535EE /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		F447193729A1840900B6C3DA /* DoFu_admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoFu_admin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F447193A29A1840900B6C3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F447193C29A1840900B6C3DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F417125F29A7DB23001535EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F417125D29A7DB1D001535EE /* Items.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F447192E29A1840900B6C3DA = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				F4AABEC329A25973006B523B /* SupportingFiles */,
+				F417125F29A7DB23001535EE /* Model */,
 				F4AABEC229A25957006B523B /* Controllers */,
 				F417125A29A7966D001535EE /* Extensions */,
 				F4AABEC429A25985006B523B /* Views */,
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F417125E29A7DB1D001535EE /* Items.swift in Sources */,
 				F447193F29A1840900B6C3DA /* LoginViewController.swift in Sources */,
 				F4AABEC129A25937006B523B /* ItemsViewController.swift in Sources */,
 				F417125929A795D1001535EE /* Extension LoginViewController.swift in Sources */,
