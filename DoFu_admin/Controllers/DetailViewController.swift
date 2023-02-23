@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController {
 
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var image: UIImageView!
@@ -19,27 +19,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         initializing()
         
-        print(selectedObject)
-        
-    }
-    
-    private func initializing() {
-        for tf in textFields {
-            tf.delegate = self
-        }
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         image.addGestureRecognizer(tap)
         image.isUserInteractionEnabled = true
+        
+        print(selectedObject)
+        
     }
+ 
     @objc private func imageTapped() {
         print("ImageTapped!!!!!!!!!!!!!")
     }
     
-    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
+
     
     @IBAction func tapTapped(_ sender: Any) {
 

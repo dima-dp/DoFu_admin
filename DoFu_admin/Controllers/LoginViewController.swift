@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Firebase
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     
     @IBOutlet weak var warningLabel: UILabel!
@@ -23,63 +24,68 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         initializing()
     }
     
-    
-    private func initializing() {
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-      
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-        
-        
-    }
-    
-    @objc private func keyboardWillShow(notification: Notification) {
-        
-        if keyboardShowed == false {
-            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                let keyboardHeight = keyboardFrame.cgRectValue.height
-                self.view.frame.origin.y -= keyboardHeight * 0.8
-                keyboardShowed = true
-            }
-        }
-    }
-    
-    @objc private func keyboardWillHide() {
-        self.view.frame.origin.y = 0
-        keyboardShowed = false
-    }
-    
-    
     @IBAction func tapTapped(_ sender: Any) {
         
         view.endEditing(true)
     }
     
-
-    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
+    private func displayWarningLabel(withText text: String) {
+        warningLabel.text = text
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
+            [weak self] in
+            self?.warningLabel.alpha = 1
+        }) { [weak self] complete in
+            self?.warningLabel.alpha = 0
+        }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
     @IBAction func loginTapped(_ sender: UIButton) {
+        
+        view.endEditing(true)
+        
+        guard let email = emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
+            displayWarningLabel(withText: "Info is incorrect")
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self]  (user, error) in
+            if error != nil {
+                self?.displayWarningLabel(withText: "Error occured")
+                return
+            }
+            if user != nil {
+                self?.performSegue(withIdentifier: "itemsSegue", sender: nil)
+                return
+            }
+            self?.displayWarningLabel(withText: "No such user")
+        }
     }
     
     @IBAction func registerTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Access Denied", message: "You are not allowed to register", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        self.present(alertController, animated: true)
+     /*   guard let email = emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
+            displayWarningLabel(withText: "Info is incorrect")
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
+            if error == nil {
+                if user != nil {
+                    self?.performSegue(withIdentifier: "itemsSegue", sender: nil)
+                }
+            }
+        }*/
     }
-    
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
+    
+    
 }
 

@@ -71,7 +71,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D5l-5B-SYW"/>
-                                                    <segue destination="ipf-i4-fc2" kind="show" identifier="itemsSegue" id="rId-AU-G8a"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-re-nZg">
@@ -131,6 +130,7 @@
                         <outlet property="loginButton" destination="xGU-VT-wyg" id="vgX-lm-wkg"/>
                         <outlet property="passwordTextField" destination="htL-Ch-LvL" id="Nwv-ka-Tg3"/>
                         <outlet property="warningLabel" destination="Mzd-IC-kXt" id="aOD-a0-mCp"/>
+                        <segue destination="ipf-i4-fc2" kind="show" identifier="itemsSegue" id="NSM-WQ-9di"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -184,6 +184,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Items" id="wmX-4v-95D">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="o06-Wd-tcS">
+                            <connections>
+                                <action selector="signOutTapped:" destination="HDi-fu-sUo" id="gxF-FS-XrM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2x4-zC-as1">
                             <connections>
                                 <action selector="addTapped:" destination="RRf-65-jbT" id="geX-hx-s2c"/>
