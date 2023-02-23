@@ -371,6 +371,13 @@
                             <constraint firstItem="f1z-e1-4ZK" firstAttribute="trailing" secondItem="FbU-U0-J2s" secondAttribute="trailing" constant="16" id="xVn-2q-b5k"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="GZZ-1T-oRf" id="rny-uw-OIw"/>
+                        <outletCollection property="textFields" destination="laC-9b-PdK" collectionClass="NSMutableArray" id="jzE-rO-gWA"/>
+                        <outletCollection property="textFields" destination="up9-vD-jWy" collectionClass="NSMutableArray" id="y2T-CE-EpW"/>
+                        <outletCollection property="textFields" destination="lOo-ge-Rjj" collectionClass="NSMutableArray" id="68u-5H-zWd"/>
+                        <outletCollection property="textFields" destination="3kf-O2-F0c" collectionClass="NSMutableArray" id="6mh-bg-Bly"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOv-Wh-PJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6KM-ad-woK">

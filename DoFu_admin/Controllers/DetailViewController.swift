@@ -9,6 +9,9 @@ import UIKit
 
 class DetailViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var textFields: [UITextField]!
+    @IBOutlet weak var image: UIImageView!
+    
     var selectedObject = ""
     var keyboardShowed = false
     
@@ -21,7 +24,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func initializing() {
-        // need to add hiding kb whet Return tapped - delegates for all of TF
+        for tf in textFields {
+            tf.delegate = self
+        }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        image.addGestureRecognizer(tap)
+        image.isUserInteractionEnabled = true
+    }
+    @objc private func imageTapped() {
+        print("ImageTapped!!!!!!!!!!!!!")
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
