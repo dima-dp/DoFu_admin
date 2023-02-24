@@ -35,11 +35,12 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self?.items = _items
             self?.tableView.reloadData()
         }
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        ref.removeAllObservers()
+       // ref.removeAllObservers()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -50,6 +51,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if editingStyle == .delete {
             let item = items[indexPath.row]
             item.ref?.removeValue()
+            tableView.reloadData()
         }
     }
     
@@ -75,7 +77,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let detailView = segue.destination as? DetailViewController
-                detailView?.selectedObject = "\(indexPath)"
+                detailView?.selectedObject = items[indexPath.row].nameEN
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }  
             
