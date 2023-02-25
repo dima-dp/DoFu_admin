@@ -45,7 +45,6 @@ class DetailViewController: UIViewController {
                 self?.costTF.text = item.cost
                 self?.linkTF.text = item.link
                 // self?.image
-                
             }
         }
     }
@@ -60,9 +59,6 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
     //    ref.removeAllObservers()
     }
-    
-    
-    
     
     @IBAction func saveTapped(_ sender: UIButton) {
         
@@ -90,6 +86,10 @@ class DetailViewController: UIViewController {
         
     }
     @objc private func imageTapped() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true)
         print("ImageTapped!!!!!!!!!!!!!")
     }
     
@@ -98,3 +98,18 @@ class DetailViewController: UIViewController {
         view.endEditing(true)
     }
 }
+
+
+extension DetailViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let choosenImage = info[.originalImage] as! UIImage
+        image.image = choosenImage
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+}
+
