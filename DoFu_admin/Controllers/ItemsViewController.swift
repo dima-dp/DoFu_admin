@@ -25,6 +25,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // reading data from databese into Items array
         ref.observe(.value) { [weak self] (snapshot) in
             var _items = Array<Items>()
             for item in snapshot.children {
@@ -43,6 +44,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
        // ref.removeAllObservers()
     }
     
+    // two methods below a user to delete table rows by sliding
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -68,7 +70,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        guard let _ = tableView.cellForRow(at: indexPath) else { return }
         self.performSegue(withIdentifier: "detailSegue", sender: self)
     }
     
@@ -77,10 +79,10 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let detailView = segue.destination as? DetailViewController
+                // selectedObject will have info for nameEN - "primary key" for databesa
                 detailView?.selectedObject = items[indexPath.row].nameEN
                 self.tableView.deselectRow(at: indexPath, animated: true)
-            }  
-            
+            }
         }
     }
     
@@ -89,7 +91,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func addTapped(_ sender: UIBarButtonItem) {
     }
     
-    
+    // MARK -> SIgn Out button tapped
     @IBAction func signOutTapped(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()

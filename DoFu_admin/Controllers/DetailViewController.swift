@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class DetailViewController: UIViewController {
-    
+    // textFields are using in extension to add delegates
     @IBOutlet var textFields: [UITextField]!
     
     @IBOutlet weak var image: UIImageView!
@@ -30,14 +30,15 @@ class DetailViewController: UIViewController {
         
         initializing()
         
+        // adding tap gesture to imageView to chose a picture
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         image.addGestureRecognizer(tap)
         image.isUserInteractionEnabled = true
         
         ref = Database.database().reference(withPath: "items")
         
-        if selectedObject != "" {
-            
+        if selectedObject != "" {   // if selectedObject = 0 it means we tapped Add button on ItemsViewController
+            // reading data from databese for selected item
             ref.child(selectedObject.lowercased()).observe(.value) { [weak self] snapshot in
                 let item = Items(snapshot: snapshot)
                 self?.nameENTF.text = item.nameEN
@@ -49,7 +50,7 @@ class DetailViewController: UIViewController {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        if selectedObject != "" {
+        if selectedObject != "" {   // if selectedObject = 0 it means we tapped Add button on ItemsViewController
             nameENTF.text = selectedObject
             nameENTF.isEnabled = false
             nameENTF.alpha = 0.9
@@ -60,6 +61,7 @@ class DetailViewController: UIViewController {
     //    ref.removeAllObservers()
     }
     
+    // MARK -> Save button tapped
     @IBAction func saveTapped(_ sender: UIButton) {
         
         saveToDatabase()
@@ -72,19 +74,18 @@ class DetailViewController: UIViewController {
             print("Wrong information")
             return
         }
-        
+        // saving data to database - creating or updating
         guard let nameUA = nameUATF.text, let nameEN = nameENTF.text, let link = linkTF.text, let cost = costTF.text else { return }
         let item = Items(nameUA: nameUA, nameEN: nameEN, link: link, cost: cost, enabled: enabledSwitch.isOn)
         let itemRef = self.ref.child(item.nameEN.lowercased())
         itemRef.setValue(["nameUA": item.nameUA, "nameEN": item.nameEN, "link": item.link ?? "no link", "cost": item.cost, "enabled": item.enabled])
         
     }
-    
+    // MARK -> Validation - checking data in textFiels to be ok
     private func validation() -> Bool {
         return true
-        
-        
     }
+    
     @objc private func imageTapped() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -94,22 +95,11 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func tapTapped(_ sender: Any) {
-        
+        // hiding a keyboard
         view.endEditing(true)
     }
 }
 
 
-extension DetailViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let choosenImage = info[.originalImage] as! UIImage
-        image.image = choosenImage
-        dismiss(animated: true)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-    }
-    
-}
+
 

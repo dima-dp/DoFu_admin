@@ -16,6 +16,7 @@ extension LoginViewController: UITextFieldDelegate  {
         emailTextField.delegate = self
         passwordTextField.delegate = self
       
+        // adding observers for looking when keyboard is shown or hided
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -27,6 +28,7 @@ extension LoginViewController: UITextFieldDelegate  {
                                                object: nil)
         
         warningLabel.alpha = 0
+        // skioing auth when user is already logged on this device
         Auth.auth().addStateDidChangeListener({ [weak self] (auth, user) in
             if user != nil {
                 self?.performSegue(withIdentifier: "itemsSegue", sender: nil)
@@ -34,6 +36,7 @@ extension LoginViewController: UITextFieldDelegate  {
         })
     }
 
+    // moving view up when keyboard is showing
     @objc func keyboardWillShow(notification: Notification) {
         
         if keyboardShowed == false {
@@ -44,12 +47,13 @@ extension LoginViewController: UITextFieldDelegate  {
             }
         }
     }
-    
+    // moving view down when keyboard hides
     @objc func keyboardWillHide() {
         self.view.frame.origin.y = 0
         keyboardShowed = false
     }
     
+    // hiding keyboard when Return button is tapped
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
         self.view.endEditing(true)
         return true

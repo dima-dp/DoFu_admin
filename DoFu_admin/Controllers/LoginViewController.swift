@@ -24,11 +24,12 @@ class LoginViewController: UIViewController {
         initializing()
     }
     
+    // MARK -> Hiding keyboard
     @IBAction func tapTapped(_ sender: Any) {
-        
         view.endEditing(true)
     }
     
+    // MARK -> Displaying warning label with different text
     private func displayWarningLabel(withText text: String) {
         warningLabel.text = text
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
@@ -44,14 +45,18 @@ class LoginViewController: UIViewController {
         emailTextField.text = ""
         passwordTextField.text = ""
     }
+    
     @IBAction func loginTapped(_ sender: UIButton) {
         
-        view.endEditing(true)
+        view.endEditing(true)   // hidina a keyboard
         
+        // checking email and password fields to not be blank
         guard let email = emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
             displayWarningLabel(withText: "Info is incorrect")
             return
         }
+        
+        // authorisation with Firebase
         Auth.auth().signIn(withEmail: email, password: password) { [weak self]  (user, error) in
             if error != nil {
                 self?.displayWarningLabel(withText: "Error occured")
@@ -65,6 +70,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK -> register button. Is disabled - amin-user can't create himself
     @IBAction func registerTapped(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Access Denied", message: "You are not allowed to register", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
