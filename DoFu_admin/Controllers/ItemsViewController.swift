@@ -52,7 +52,8 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let item = items[indexPath.row]
-            item.ref?.removeValue()
+            guard let ref = item.ref else { return }
+            ref.removeValue()
             tableView.reloadData()
         }
     }

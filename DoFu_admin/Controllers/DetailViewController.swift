@@ -69,9 +69,9 @@ class DetailViewController: UIViewController {
     }
     
     private func saveToDatabase() {
-        
-        if validation() == false {
-            print("Wrong information")
+        guard let link = linkTF.text else { return }
+        if validateURL(withURL: link) == false {
+            print("Wrong URL. Please, check it once more")
             return
         }
         // saving data to database - creating or updating
@@ -82,7 +82,10 @@ class DetailViewController: UIViewController {
         
     }
     // MARK -> Validation - checking data in textFiels to be ok
-    private func validation() -> Bool {
+    private func validateURL(withURL url: String) -> Bool {
+        let regex = "http[s]?://(([^/:.[:space:]]+(.[^/:.[:space:]]+)*)|([0-9](.[0-9]{3})))(:[0-9]+)?((/[^?#[:space:]]+)([^#[:space:]]+)?(#.+)?)?"
+        let test = NSPredicate(format:"SELF MATCHES %@", regex)
+        let result = test.evaluate(with: url)
         return true
     }
     
