@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import SkeletonView
 
 class DetailViewController: UIViewController {
     // textFields are using in extension to add delegates
@@ -38,26 +39,48 @@ class DetailViewController: UIViewController {
         
         ref = Database.database().reference(withPath: "items")
         
-        if selectedObject != "" {   // if selectedObject = "" it means we tapped Add button on ItemsViewController
+       
+        
+        if selectedObject != "" {   // if selectedObject != "" it means we tapped existing item in previous screen
+            
+            for tf in textFields {
+                tf.isSkeletonable = true
+                tf.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .wetAsphalt), transition: .crossDissolve(0.25))
+            }
+            image.isSkeletonable = true
+            image.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .wetAsphalt), transition: .crossDissolve(0.25))
+           
+            
             // reading data from databese for selected item
             ref.child(selectedObject.lowercased()).observe(.value) { [weak self] snapshot in
+                
                 let item = Items(snapshot: snapshot)
+                for tf in self!.textFields {
+                    tf.stopSkeletonAnimation()
+                    tf.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+                }
+                
                 self?.nameENTF.text = item.nameEN
                 self?.nameUATF.text = item.nameUA
                 self?.costTF.text = item.cost
                 self?.linkTF.text = item.link
+                
             }
             // downloading image
             let refImage = Storage.storage().reference().child("itemsFolder").child(selectedObject.lowercased())
             refImage.getData(maxSize: Int64(1024 * 1024 * 500)) { [weak self]  (data, error) in
                 guard let imageData = data else { return }
                 let image = UIImage(data: imageData)
+                
+                self?.image.stopSkeletonAnimation()
+                self?.image.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
                 self?.image.image = image
             }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         if selectedObject != "" {   // if selectedObject = 0 it means we tapped Add button on ItemsViewController
+
             nameENTF.text = selectedObject
             nameENTF.isEnabled = false
             nameENTF.alpha = 0.9
