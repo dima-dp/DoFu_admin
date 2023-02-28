@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 extension DetailViewController: UITextFieldDelegate {
     // MARK -> Here I add methods to show/hide keyboard
     
@@ -28,10 +29,12 @@ extension DetailViewController: UITextFieldDelegate {
     
     // MARK -> imagePickerMethods
     extension DetailViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+      
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            let choosenImage = info[.originalImage] as! UIImage
-            image.image = choosenImage
+            guard let choosenImage = info[.originalImage] as? UIImage else { return }
             dismiss(animated: true)
+            image.image = choosenImage
+
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

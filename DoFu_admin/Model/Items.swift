@@ -12,19 +12,18 @@ struct Items {
     let ref: DatabaseReference?
     let nameUA: String
     let nameEN: String
-    let link: String?
+    let link: String
     let cost: String
+    let image: String
     var enabled: Bool
     
-   // var image: UIImage?
-    
-    init(nameUA: String, nameEN: String, link: String?, cost: String, enabled: Bool) {
+    init(nameUA: String, nameEN: String, link: String, cost: String, image: String, enabled: Bool) {
         self.nameUA = nameUA
         self.nameEN = nameEN
         self.link = link
         self.cost = cost
         self.enabled = enabled
-        //self.image = image
+        self.image = image
         self.ref = nil
     }
     
@@ -35,7 +34,7 @@ struct Items {
         link = snapshotValue["link"] as! String
         cost = snapshotValue["cost"] as! String
         enabled = snapshotValue["enabled"] as! Bool
-        //image = snapshotValue["image"] as! UIImage
+        image = snapshotValue["image"] as! String
         ref = snapshot.ref
         
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -53,7 +54,9 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if editingStyle == .delete {
             let item = items[indexPath.row]
             guard let ref = item.ref else { return }
-            ref.removeValue()
+            ref.removeValue()    // removing value
+            let refImage = Storage.storage().reference().child("itemsFolder").child(item.nameEN)
+            refImage.delete()    // removing image
             tableView.reloadData()
         }
     }
@@ -86,8 +89,6 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
-
     
     @IBAction func addTapped(_ sender: UIBarButtonItem) {
     }
