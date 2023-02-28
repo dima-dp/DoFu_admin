@@ -49,10 +49,10 @@ class DetailViewController: UIViewController {
             }
             // downloading image
             let refImage = Storage.storage().reference().child("itemsFolder").child(selectedObject.lowercased())
-            refImage.getData(maxSize: Int64(1024 * 1024 * 500)) { (data, error) in
+            refImage.getData(maxSize: Int64(1024 * 1024 * 500)) { [weak self]  (data, error) in
                 guard let imageData = data else { return }
                 let image = UIImage(data: imageData)
-                self.image.image = image
+                self?.image.image = image
             }
         }
     }

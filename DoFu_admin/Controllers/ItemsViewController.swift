@@ -9,24 +9,45 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let searchController = UISearchController()
+    
     var ref: DatabaseReference!
     var items = Array<Items>()
+    var filteredItems = Array<Items>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ref = Database.database().reference(withPath: "items")
+        initSearchController()
+    }
+    
+    private func initSearchController() {
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        definesPresentationContext = true
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        searchController.searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // reading data from databese into Items array
+        downloadItems()
+        tableView.reloadData()
+    }
+    
+    private func downloadItems() {
         ref.observe(.value) { [weak self] (snapshot) in
             var _items = Array<Items>()
             for item in snapshot.children {
@@ -37,12 +58,6 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self?.items = _items
             self?.tableView.reloadData()
         }
-        tableView.reloadData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // ref.removeAllObservers()
     }
     
     // two methods below a user to delete table rows by sliding
@@ -54,25 +69,42 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if editingStyle == .delete {
             let item = items[indexPath.row]
             guard let ref = item.ref else { return }
-            ref.removeValue()    // removing value
             let refImage = Storage.storage().reference().child("itemsFolder").child(item.nameEN)
+            ref.removeValue()    // removing value
             refImage.delete()    // removing image
+            downloadItems()      // refreshing data from database
             tableView.reloadData()
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if searchController.isActive {
+            return filteredItems.count
+        }
+        else {
+            return items.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row].nameEN
+        
+        let itemsShape: Items!
+        if searchController.isActive {
+            itemsShape = filteredItems[indexPath.row]
+        }
+        else {
+            itemsShape = items[indexPath.row]
+        }
+        
+        cell.textLabel?.text = itemsShape.nameEN
         cell.textLabel?.textColor = .white
         return cell
     }
     
+    
+    // MARK -> Segue methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let _ = tableView.cellForRow(at: indexPath) else { return }
         self.performSegue(withIdentifier: "detailSegue", sender: self)
@@ -104,4 +136,26 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dismiss(animated: true)
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        
+        let searchText = searchBar.text!
+        
+        filterForSearchText(searchText: searchText)
+    }
+    private func filterForSearchText(searchText: String) {
+        filteredItems = items.filter
+        {
+            shape in
+            if (searchController.searchBar.text != "") {
+                let searchTextMatch = shape.nameEN.lowercased().contains(searchText.lowercased())
+                
+                return searchTextMatch
+            }
+            else {
+                return false
+            }
+        }
+        self.tableView.reloadData()
+    }
 }
