@@ -19,7 +19,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         ref = Database.database().reference(withPath: "items")
     }
     
@@ -42,7 +42,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-       // ref.removeAllObservers()
+        // ref.removeAllObservers()
     }
     
     // two methods below a user to delete table rows by sliding

@@ -47,8 +47,9 @@ class DetailViewController: UIViewController {
                 self?.costTF.text = item.cost
                 self?.linkTF.text = item.link
             }
+            // downloading image
             let refImage = Storage.storage().reference().child("itemsFolder").child(selectedObject.lowercased())
-            refImage.getData(maxSize: Int64(1024 * 1024 * 1024)) { (data, error) in
+            refImage.getData(maxSize: Int64(1024 * 1024 * 500)) { (data, error) in
                 guard let imageData = data else { return }
                 let image = UIImage(data: imageData)
                 self.image.image = image
@@ -64,7 +65,6 @@ class DetailViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    //    ref.removeAllObservers()
     }
     
     // MARK -> Save button tapped
@@ -77,29 +77,27 @@ class DetailViewController: UIViewController {
     private func saveToDatabase() {
         guard let link = linkTF.text else { return }
         if validateURL(withURL: link) == false {
-                   let alert = UIAlertController(title: "Link error", message: "Invalid link", preferredStyle: UIAlertController.Style.alert)
-                   alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                   self.present(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Link error", message: "Invalid link", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
+        
         // saving data to database - creating or updating
         guard let nameUA = nameUATF.text, let nameEN = nameENTF.text, let link = linkTF.text, let cost = costTF.text else { return }
-        self.uploadImage(itemName: nameEN, photo: self.image.image!) { (result) in
+        self.uploadImage(itemName: nameEN.lowercased(), photo: self.image.image!) { (result) in
             switch result {
             case .success(let url):
                 let item = Items(nameUA: nameUA, nameEN: nameEN, link: link, cost: cost, image: url.absoluteString, enabled: self.enabledSwitch.isOn)
-                print(url.absoluteString)
-                
+
                 let itemRef = self.ref.child(item.nameEN.lowercased())
                 
                 itemRef.setValue(["nameUA": item.nameUA, "nameEN": item.nameEN, "link": item.link, "cost": item.cost, "image": item.image, "enabled": item.enabled])
             case .failure(let error):
                 print(error.localizedDescription)
-            
             }
         }
         
-
         
     }
     // MARK -> Validation - checking data in textFiels to be ok
@@ -118,9 +116,9 @@ class DetailViewController: UIViewController {
     }
     
     private func uploadImage(itemName: String, photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
-      
+        
         let ref = Storage.storage().reference().child("itemsFolder").child(itemName)
-        guard let imageData = photo.jpegData(compressionQuality: 1.0) else { return }
+        guard let imageData = photo.jpegData(compressionQuality: 0.4) else { return }
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         ref.putData(imageData, metadata: metadata) { metadata, error in

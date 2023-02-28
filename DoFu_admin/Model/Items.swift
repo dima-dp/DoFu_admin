@@ -36,6 +36,5 @@ struct Items {
         enabled = snapshotValue["enabled"] as! Bool
         image = snapshotValue["image"] as! String
         ref = snapshot.ref
-        
     }
 }
