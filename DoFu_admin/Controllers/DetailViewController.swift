@@ -39,8 +39,6 @@ class DetailViewController: UIViewController {
         
         ref = Database.database().reference(withPath: "items")
         
-       
-        
         if selectedObject != "" {   // if selectedObject != "" it means we tapped existing item in previous screen
             
             for tf in textFields {
@@ -51,15 +49,15 @@ class DetailViewController: UIViewController {
             image.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .wetAsphalt), transition: .crossDissolve(0.25))
            
             
-            // reading data from databese for selected item
+            // reading data from database for selected item
             ref.child(selectedObject.lowercased()).observe(.value) { [weak self] snapshot in
                 
                 let item = Items(snapshot: snapshot)
-                for tf in self!.textFields {
+                guard let textFields = self?.textFields else { return  }
+                for tf in textFields {
                     tf.stopSkeletonAnimation()
                     tf.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
                 }
-                
                 self?.nameENTF.text = item.nameEN
                 self?.nameUATF.text = item.nameUA
                 self?.costTF.text = item.cost
@@ -88,6 +86,7 @@ class DetailViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+      
     }
     
     // MARK -> Save button tapped
